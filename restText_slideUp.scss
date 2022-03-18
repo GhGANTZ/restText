@@ -35,7 +35,7 @@ body {
 }
 
 #main-text span {
-  @for $i from 1 through 23 {
+  @for $i from 1 through 24 {
     &:nth-child(#{$i + 1}) {
       $delay: $i * 0.04 + s;
       transition-delay: $delay;

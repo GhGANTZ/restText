@@ -161,4 +161,9 @@ body {
   -webkit-transition-delay: 0.92s;
           transition-delay: 0.92s;
 }
+
+#main-text span:nth-child(25) {
+  -webkit-transition-delay: 0.96s;
+          transition-delay: 0.96s;
+}
 /*# sourceMappingURL=restText_slideUp.css.map */
