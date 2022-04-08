@@ -1,0 +1,57 @@
+$textCount: 24;
+$dispSec: 10;
+$noneDispSec: 3;
+$animationTime: $dispSec + $noneDispSec + ($textCount * 2 / 10);
+
+:root {
+  --num-hour: 15;
+  --num-minute: 30;
+  --font-color: black;
+  --font-size: 50px;
+  --font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+  --font-weight: bold;
+}
+
+body {
+  color: var(--font-color);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+span {
+color: transparent;
+animation: blur ($animationTime) + s ease-out infinite;
+-webkit-animation: blur ($animationTime) + s ease-out infinite;
+}
+
+@for $i from 1 through $textCount {
+  span:nth-child(#{$i}) {
+    animation-delay: ( $i / 10 ) + s;
+    -webkit-animation-delay: ( $i / 10 ) + s;
+  }
+}
+@keyframes blur {
+0%{text-shadow:  0 0 100px #000; opacity:0;}
+#{percentage( 1 / $animationTime )}{text-shadow:  0 0 90px #000; opacity:1;}
+#{percentage( 2 / $animationTime )}{text-shadow:  0 0 0px #000;}
+#{percentage( ($animationTime - $noneDispSec - 2) / $animationTime )}{text-shadow:  0 0 0px #000;}
+#{percentage( ($animationTime - $noneDispSec - 1) / $animationTime )}{text-shadow:  0 0 90px #000; opacity:1;}
+#{percentage( ($animationTime - $noneDispSec) / $animationTime )}{text-shadow:  0 0 100px #000; opacity:0;}
+100%{opacity: 0;}
+}
+
+@-webkit-keyframes blur {
+  0%{text-shadow:  0 0 100px #000; opacity:0;}
+  #{percentage( 1 / $animationTime )}{text-shadow:  0 0 90px #000; opacity:1;}
+  #{percentage( 2 / $animationTime )}{text-shadow:  0 0 0px #000;}
+  #{percentage( ($animationTime - $noneDispSec - 2) / $animationTime )}{text-shadow:  0 0 0px #000;}
+  #{percentage( ($animationTime - $noneDispSec - 1) / $animationTime )}{text-shadow:  0 0 90px #000; opacity:1;}
+  #{percentage( ($animationTime - $noneDispSec) / $animationTime )}{text-shadow:  0 0 100px #000; opacity:0;}
+  100%{opacity: 0;}
+}

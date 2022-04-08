@@ -105,12 +105,13 @@
     minuteNum = getComputedStyle(document.documentElement).getPropertyValue('--num-minute');
     textTime = 'ただいま休憩中です。<br/>' + hourNum + "時"+ minuteNum + "分より再開いたします。";
     document.getElementById('time-text').innerHTML = textTime;
-  }, 1000);  
+  }, 500);  
 
   const CLASSNAME = "-visible";
-  const LOOP_TIME = 20000;
-  const TIMEOUT = 12000;
+  const NON_DISP_TIME = 5000;
+  const DISP_TIME = 10000;
   const DELAY = 100;
+  const LOOP_TIME = NON_DISP_TIME + DISP_TIME + ( DELAY * 2 );
   const $target1 = $(".title");
   const $target2 = $(".sentence");
 
@@ -125,7 +126,7 @@
       setTimeout(() => {
         $target2.removeClass(CLASSNAME);
       }, DELAY);
-    }, TIMEOUT);
+    }, DISP_TIME);
   }, LOOP_TIME);
 </script>
 
